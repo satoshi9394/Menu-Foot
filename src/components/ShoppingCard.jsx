@@ -4,6 +4,12 @@ import React from 'react'
 
 const ShoppingCard = (props) =>{
 
+    const total =props.items.reduce( (x, y) => {
+        return x +y.price
+    },0)
+
+    console.log(total)
+
     const allProducts = props.items.length
     let mensaje;
 
@@ -21,6 +27,7 @@ const ShoppingCard = (props) =>{
                     <div className="card-content white-text">
                         <h6>Carrito</h6>
                         {mensaje}
+                        <p>costo: ${total}</p>
                     </div>
                 </div>
             </div>

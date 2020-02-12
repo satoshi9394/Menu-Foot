@@ -1,39 +1,40 @@
-import React from 'react';
+import React, {Component} from 'react';
 import Product from './components/Product'
 import ShoppingCard from './components/ShoppingCard'
 
 import productsData from './Info/productsData'
-/* import logo from './logo.svg';
-import './App.css'; */
+/* import logo from './logo.svg';*/
+import './App.css'; 
 
-const App=() =>{
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      productsData : productsData
+    }
+  }
 
-  const cards = productsData.map((product,idx) =>
+  render() {
+    const cards = this.state.productsData.map((product,idx) =>
     <Product info={product} key={idx}/>
-  );
+    );
 
+    const allProduct = [productsData[0], productsData[2]]
 
-  const allProduct = [productsData[0]]
-
-  
-
-
-  
-  return (
-    <div className='container'>
-      <div className="row">
-        <div className="col s8">
-          <div className="row">
-            <div className="col s6">{cards}</div>
-            <div className="col s6">{cards}</div>
-          </div>          
-        </div>
-        <div className="col s4">
-          <ShoppingCard items={allProduct} />
+    return (
+      <div className='container' id="content">
+        <div className="row">
+          <div className="col s8">
+            {cards}          
+          </div>
+          <div className="col s4">
+            <ShoppingCard items={allProduct} />
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
+ 
 
 export default App;
