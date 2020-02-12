@@ -1,24 +1,37 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Product from './components/Product'
+import ShoppingCard from './components/ShoppingCard'
 
-function App() {
+import productsData from './Info/productsData'
+/* import logo from './logo.svg';
+import './App.css'; */
+
+const App=() =>{
+
+  const cards = productsData.map((product,idx) =>
+    <Product info={product} key={idx}/>
+  );
+
+
+  const allProduct = [productsData[0]]
+
+  
+
+
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='container'>
+      <div className="row">
+        <div className="col s8">
+          <div className="row">
+            <div className="col s6">{cards}</div>
+            <div className="col s6">{cards}</div>
+          </div>          
+        </div>
+        <div className="col s4">
+          <ShoppingCard items={allProduct} />
+        </div>
+      </div>
     </div>
   );
 }
