@@ -1,6 +1,7 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Product from './components/Product'
 import ShoppingCard from './components/ShoppingCard'
+import NavBar from './components/NavBar'
 
 import productsData from './Info/productsData'
 /* import logo from './logo.svg';*/
@@ -10,7 +11,8 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      productsData : productsData
+      productsData : productsData,
+      allProduct: []
     }
   }
 
@@ -19,16 +21,19 @@ class App extends Component {
     <Product info={product} key={idx}/>
     );
 
-    const allProduct = [productsData[0], productsData[2]]
+    this.state.allProduct = [productsData[0], productsData[4], productsData[1]]
 
     return (
       <div className='container' id="content">
         <div className="row">
-          <div className="col s8">
-            {cards}          
+          <div col s12>
+            <NavBar/>
           </div>
-          <div className="col s4">
-            <ShoppingCard items={allProduct} />
+          <div className="col s7">
+            {cards}    
+          </div>
+          <div className="col s5">
+            <ShoppingCard items={this.state.allProduct} />
           </div>
         </div>
       </div>

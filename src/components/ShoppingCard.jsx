@@ -5,7 +5,7 @@ import React from 'react'
 const ShoppingCard = (props) =>{
 
     const total =props.items.reduce( (x, y) => {
-        return x +y.price
+        return x + y.price
     },0)
 
     console.log(total)
